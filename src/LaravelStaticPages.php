@@ -1,8 +1,15 @@
-<?php
+<?php namespace Eamirgh\LaravelStaticPages;
 
-namespace Eamirgh\LaravelStaticPages;
+use League\Flysystem\File;
 
 class LaravelStaticPages
 {
-    // Build your next great package.
+	public static function CreateFile(String $view, $data ,String $path)
+	{
+		File::put("{$path}.blade.php",
+			view($view)
+				->with($data)
+				->render());
+	}
+
 }
